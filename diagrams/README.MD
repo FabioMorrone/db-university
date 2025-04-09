@@ -11,7 +11,16 @@ ogni Studente può iscriversi a più appelli di Esame;
 per ogni appello d'Esame a cui lo Studente ha partecipato, è necessario memorizzare il voto ottenuto, anche se non sufficiente. Pensiamo a quali entità (tabelle) creare per il nostro database e cerchiamo poi di stabilirne le relazioni. Infine, andiamo a definire le colonne e i tipi di dato di ogni tabella.
 
 
+## table name: `exame_sessions`
 
+## columns ## 
+
+- id: (BIGINT) primary key - auto_increment - NOT NULL
+- subject_id: (BIGINT) foreign key - NOT NULL 
+- teacher_id: (BIGINT) foreign key - NOT NULL 
+- date: DATE() - NOT NULL 
+- exame_session_expire: DATE() - NOT NULL
+- number_of_students: SMALLINT() - NOT NULL
 
 ## Table name : `departments`
 
@@ -32,15 +41,7 @@ per ogni appello d'Esame a cui lo Studente ha partecipato, è necessario memoriz
 - department_id : (BIGINT) foreign key - NOT NULL
 
 
-## table name: `subjects` 
 
-## columns ## 
-
-- id : (BIGINT) primary key - auto_increment - NOT NULL 
-- name : VARCHAR (100) - NOT NULL 
-- teacher_id : (BIGINT) foreing key - NOT NULL 
-- department_id : (BIGINT) foreign key 
-- degree_course_id : (BIGINT) foreign key - NOT NULL 
 
 ## table name: `teachers`
 
@@ -57,17 +58,18 @@ per ogni appello d'Esame a cui lo Studente ha partecipato, è necessario memoriz
 - role : VARCHAR(50) - NOT NULL
 
 
-## table name: `exame_sessions`
 
-## columns ## 
 
-- id: (BIGINT) primary key - auto_increment - NOT NULL
-- subject_id: (BIGINT) foreign key - NOT NULL 
-- teacher_id: (BIGINT) foreign key - NOT NULL 
-- date: DATE() - NOT NULL 
-- exame_session_expire: DATE() - NOT NULL
-- number_of_students: SMALLINT() - NOT NULL
 
+## Table name: `votes`
+
+## Columns ##
+- id (BIGINT) primary key - auto_increment - NOT NULL
+- vote: TINYINT(2) - NOT NULL
+- is_with_honours: TINYINT DEFAULT(0)
+- student_id: (BIGINT) foreign key - NOT NULL
+- exam_session_id: (BIGINT) foreign key - NOT NULL
+- teacher_id: (BIGINT) foreign key - NOT NULL
 
 
 ## Table name: `students`
@@ -86,13 +88,12 @@ per ogni appello d'Esame a cui lo Studente ha partecipato, è necessario memoriz
 - year_of_registration: YEAR() - NOT NULL
 
 
-## Table name: `votes`
+## table name: `subjects` 
 
-## Columns ##
-- id (BIGINT) primary key - auto_increment - NOT NULL
-- vote: TINYINT(2) - NOT NULL
-- is_with_honours: TINYINT DEFAULT(0)
-- student_id: (BIGINT) foreign key - NOT NULL
-- exam_session_id: (BIGINT) foreign key - NOT NULL
-- teacher_id: (BIGINT) foreign key - NOT NULL
+## columns ## 
 
+- id : (BIGINT) primary key - auto_increment - NOT NULL 
+- name : VARCHAR (100) - NOT NULL 
+- teacher_id : (BIGINT) foreing key - NOT NULL 
+- department_id : (BIGINT) foreign key 
+- degree_course_id : (BIGINT) foreign key - NOT NULL 
