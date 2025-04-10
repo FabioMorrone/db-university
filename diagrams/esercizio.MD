@@ -34,6 +34,6 @@ SELECT COUNT('name')
 FROM `departments`
 
 
-SELECT *
-FROM `teachers`
-WHERE `phone` IS NULL 
+SELECT COUNT('phone') 
+FROM `teachers` 
+WHERE `phone` IS NULL
