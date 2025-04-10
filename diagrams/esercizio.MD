@@ -30,7 +30,7 @@ FROM `degrees`
 WHERE `level` = 'magistrale'
 
 
-SELECT *
+SELECT COUNT('name')
 FROM `departments`
 
 
